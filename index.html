@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【酷AI超進化學院】探索生成式AI無限可能 | 零基礎實戰工作坊</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberBlue: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            700: '#1D4ED8',
+                            800: '#1E40AF',
+                            900: '#1E3A8A',
+                            950: '#030712',
+                        },
+                        cyberNeon: {
+                            default: '#06B6D4',
+                            light: '#22D3EE',
+                            dark: '#0891B2'
+                        },
+                        cyberIndigo: {
+                            50: '#EEF2FF',
+                            100: '#E0E7FF',
+                            200: '#C7D2FE',
+                            550: '#5A5FE0', /* 新增高對比平衡色 */
+                            600: '#4F46E5',
+                            700: '#4338CA',
+                            750: '#3C31B1', /* 補全原代碼缺少的級距 */
+                            800: '#3730A3',
+                            900: '#312E81',
+                        },
+                        cyberBg: {
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            900: '#0F172A',
+                            950: '#090D1A',
+                        },
+                        amber: {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            600: '#D97706',
+                            700: '#B45309',
+                            800: '#92400E',
+                            850: '#853A0C', /* 補全原代碼缺少的級距 */
+                            900: '#78350F',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'Inter', 'sans-serif'],
+                        tech: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+        .glow-effect {
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15), 0 1px 3px 0 rgba(99, 102, 241, 0.05);
+        }
+        .glow-effect-hover:hover {
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25), 0 1px 5px 0 rgba(99, 102, 241, 0.1);
+        }
+        .glow-text {
+            text-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
+        }
+        /* 優化動畫曲線與過渡 */
+        .transition-premium {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="bg-cyberBg-50 text-slate-800 font-sans selection:bg-cyberBlue-100 selection:text-cyberBlue-800 antialiased overflow-x-hidden">
+
+    <!-- 導覽列 -->
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-cyberBg-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <div class="flex items-center space-x-3">
+                    <!-- AI Brain Orbit Logo SVG -->
+                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-cyberIndigo-600 animate-pulse" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="5" stroke-dasharray="10 5" />
+                        <circle cx="50" cy="50" r="25" stroke="url(#paint0_linear)" stroke-width="6" />
+                        <path d="M50 20C66.5685 20 80 33.4315 80 50C80 66.5685 66.5685 80 50 80C33.4315 80 20 66.5685 20 50" stroke="#06B6D4" stroke-width="4" stroke-linecap="round" />
+                        <circle cx="50" cy="50" r="8" fill="currentColor" />
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="25" y1="25" x2="75" y2="75" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#6366F1" />
+                                <stop offset="1" stop-color="#06B6D4" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div>
+                        <span class="font-tech font-bold text-base sm:text-lg block tracking-tight text-slate-950">Cool AI Academy</span>
+                        <span class="text-[10px] sm:text-xs block text-cyberIndigo-600 tracking-widest font-semibold uppercase -mt-1">酷AI超進化學院</span>
+                    </div>
+                </div>
+                
+                <!-- 桌面版選單 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-cyberIndigo-600 font-medium transition-colors duration-200">什麼是酷AI？</a>
+                    <a href="#pillars" class="text-slate-600 hover:text-cyberIndigo-600 font-medium transition-colors duration-200">三大核心力</a>
+                    <a href="#curriculum" class="text-slate-600 hover:text-cyberIndigo-600 font-medium transition-colors duration-200">12大武器庫</a>
+                    <a href="#quiz" class="text-slate-600 hover:text-cyberIndigo-600 font-medium transition-colors duration-200">AI取代度測試</a>
+                    <a href="#faq" class="text-slate-600 hover:text-cyberIndigo-600 font-medium transition-colors duration-200">新手解惑</a>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="#register" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-white bg-gradient-to-r from-cyberIndigo-600 to-cyberBlue-600 hover:from-cyberIndigo-700 hover:to-cyberBlue-700 font-medium tracking-wide shadow-lg shadow-cyberIndigo-600/20 hover:shadow-cyberIndigo-600/30 transition-premium transform hover:-translate-y-0.5 active:translate-y-0">
+                        免費搶先預約 🚀
+                    </a>
+                </div>
+
+                <!-- 行動版選單按鈕 -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-cyberIndigo-600 focus:outline-none transition-colors" aria-label="Toggle Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行動版下拉選單 -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-cyberBg-200/50 bg-white px-4 pt-2 pb-6 space-y-3 shadow-inner">
+            <a href="#about" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-cyberBg-100 hover:text-cyberIndigo-600 transition-colors">什麼是酷AI？</a>
+            <a href="#pillars" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-cyberBg-100 hover:text-cyberIndigo-600 transition-colors">三大核心力</a>
+            <a href="#curriculum" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-cyberBg-100 hover:text-cyberIndigo-600 transition-colors">12大武器庫</a>
+            <a href="#quiz" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-cyberBg-100 hover:text-cyberIndigo-600 transition-colors">AI取代度測試</a>
+            <a href="#faq" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-cyberBg-100 hover:text-cyberIndigo-600 transition-colors">新手解惑</a>
+            <a href="#register" class="block w-full text-center px-4 py-3 rounded-xl text-white bg-gradient-to-r from-cyberIndigo-600 to-cyberBlue-600 font-medium shadow-md transition-colors">免費搶先預約 🚀</a>
+        </div>
+    </nav>
+
+    <!-- 英雄區 (Hero Section) -->
+    <header class="relative overflow-hidden pt-12 pb-20 sm:pb-28 lg:pt-20 lg:pb-36 bg-gradient-to-b from-cyberIndigo-50/50 to-cyberBg-50">
+        <!-- 背景裝飾 -->
+        <div class="absolute inset-0 opacity-40 pointer-events-none">
+            <svg class="absolute top-0 right-0 w-[500px] h-[500px] text-cyberIndigo-100/40 transform translate-x-1/3 -translate-y-1/4" viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="40" />
+            </svg>
+            <svg class="absolute bottom-0 left-0 w-[300px] h-[300px] text-cyberNeon-light/10 transform -translate-x-1/4 translate-y-1/4" viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="50" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- 英雄區 left -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6 sm:space-y-8">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider text-cyberIndigo-750 bg-cyberIndigo-100/70 border border-cyberIndigo-200/50 uppercase animate-bounce">
+                        🔥 零基礎爆發！解鎖你的第二大腦
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight sm:leading-none">
+                        生活與工作，<br class="sm:hidden">難道只能當爆肝複製人？
+                    </h1>
+                    <p class="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed font-light">
+                        每天重複著無意義的排版、寫文案、改簡報？<br>
+                        <strong class="font-bold text-slate-900">酷AI超進化學院</strong>準備了最實用的神級 AI 工具導覽與共學社群，不談枯燥理論、不用寫一行程式，帶你一邊輕鬆玩一邊掌握 ChatGPT、Midjourney、AI 自動化等未來武器！
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#register" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full text-white bg-gradient-to-r from-cyberIndigo-600 to-cyberBlue-600 hover:from-cyberIndigo-700 hover:to-cyberBlue-700 text-lg font-bold tracking-wide shadow-xl shadow-cyberIndigo-600/30 hover:scale-[1.02] active:scale-100 transition-premium">
+                            搶先解鎖 AI 大禮包 🚀
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                        <a href="#about" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full text-slate-700 bg-white hover:bg-slate-50 text-lg font-medium tracking-wide border border-slate-250 shadow-sm hover:shadow transition-premium">
+                            這到底多神奇？
+                        </a>
+                    </div>
+                    
+                    <!-- 快速特色標籤 -->
+                    <div class="pt-4 grid grid-cols-3 gap-2 max-w-md mx-auto lg:mx-0 border-t border-slate-200/60 text-center">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-slate-950 font-tech">100%</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-light mt-0.5">免費共學計畫</p>
+                        </div>
+                        <div class="border-x border-slate-200">
+                            <p class="text-2xl sm:text-3xl font-bold text-slate-950 font-tech">12堂</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-light mt-0.5">超神生成式工具</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-slate-950 font-tech">0</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-light mt-0.5">程式基礎門檻</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 英雄區 right (微調卡片設計，增加立體感) -->
+                <div class="lg:col-span-5 flex justify-center items-center">
+                    <div class="relative w-full max-w-md aspect-square bg-white rounded-[2rem] shadow-2xl p-6 sm:p-8 flex flex-col justify-between border border-cyberBg-200 glow-effect hover:scale-[1.01] transition-premium">
+                        <div class="flex justify-between items-start">
+                            <div class="space-y-1">
+                                <span class="text-xs font-semibold text-cyberIndigo-600 tracking-wider uppercase">Cool AI Live Workspace</span>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900">每週四超進化雲端直播</h3>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold animate-pulse">
+                                熱烈報名中
+                            </span>
+                        </div>
+                        
+                        <!-- 圖片展示區 -->
+                        <div class="my-6 flex justify-center items-center h-48 bg-cyberBg-100 rounded-2xl overflow-hidden relative border border-cyberBg-200/50 group">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="未來科技 AI 概念圖" 
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.src='https://placehold.co/600x400/4F46E5/FFF?text=Cool+AI+Evolution'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-mono bg-black/60 px-2 py-1 rounded">Generate AI Art</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2 text-sm text-slate-600">
+                                <span class="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-cyberIndigo-600 animate-ping"></span>
+                                <span>「AI 不會淘汰你，但會用 AI 的人會。」</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-100">
+                                <p class="leading-relaxed">
+                                  方式：線上 Discord & YouTube 直播<br>
+                                  社群：Discord 創作者專屬共學頻道
+                                </p>
+                                <p class="text-right leading-relaxed">
+                                  時間：每週四晚上<br>
+                                  19:30 - 21:30
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 關於酷AI超進化工作坊 (About Section) -->
+    <section id="about" class="py-20 sm:py-28 bg-white border-y border-cyberBg-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest text-cyberIndigo-600 uppercase">What's Cool AI Academy?</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">酷AI超進化工作坊，到底多有梗？</p>
+                <div class="w-12 h-1 bg-cyberIndigo-500 mx-auto rounded"></div>
+                <p class="text-lg text-slate-600 font-light max-w-2xl mx-auto pt-2">
+                    這不是枯燥的學術研究課，也沒有看不懂的數學神經網路公式。這是一個專為數位遊民、創作者、學生和職場新人打造的 AI 特訓基地。我們透過最輕鬆、直接的實戰，教你用 AI 解決日常中所有重複與低效的痛點！
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 特色 1 -->
+                <div class="bg-cyberBg-50 rounded-2xl p-8 border border-cyberBg-200/40 hover:border-cyberIndigo-500/20 glow-effect-hover transition-premium transform hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cyberIndigo-50 flex items-center justify-center text-cyberIndigo-600 mb-6 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-950 mb-3">全免費工具，拒絕當冤大頭 💡</h3>
+                    <p class="text-slate-600 font-light leading-relaxed">
+                        我們懂新手怕亂花錢的心情！課程主打「免費級工具」與「最高 CP 值替代方案」，手把手帶你領取各大工具的免費額度，不用大筆預算也能享受 AI 生產力。
+                    </p>
+                </div>
+
+                <!-- 特色 2 -->
+                <div class="bg-cyberBg-50 rounded-2xl p-8 border border-cyberBg-200/40 hover:border-cyberIndigo-500/20 glow-effect-hover transition-premium transform hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cyberIndigo-50 flex items-center justify-center text-cyberIndigo-600 mb-6 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-950 mb-3">手把手實戰，堅決不吹牛 🛠️</h3>
+                    <p class="text-slate-600 font-light leading-relaxed">
+                        我們講究「當堂開箱、現學現做」。只要跟著節奏，當天就能生成自己專屬的二次元 AI 分身、自媒體爆款企劃案，或是 3 分鐘做出一首完整流行歌曲！
+                    </p>
+                </div>
+
+                <!-- 特色 3 -->
+                <div class="bg-cyberBg-50 rounded-2xl p-8 border border-cyberBg-200/40 hover:border-cyberIndigo-500/20 glow-effect-hover transition-premium transform hover:-translate-y-1 md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 rounded-xl bg-cyberIndigo-50 flex items-center justify-center text-cyberIndigo-600 mb-6 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-950 mb-3">地表最狂 AI 創作者共學社群 🤝</h3>
+                    <p class="text-slate-600 font-light leading-relaxed">
+                        告別孤單自學。在我們活躍的 Discord 社群裡，有各路自媒體網紅、設計師、行銷經理、以及開源 AI 開發者，一起交流最新提示詞（Prompts）、共創專案！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三大核心元素 (Core Elements Section) -->
+    <section id="pillars" class="py-20 sm:py-28 bg-cyberBg-100/60 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest text-cyberIndigo-600 uppercase">The Three Elements</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">超進化工作坊三大核心板塊</p>
+                <div class="w-12 h-1 bg-cyberIndigo-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 核心 1：神級工具開箱 -->
+                <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-cyberBg-200/50 flex flex-col justify-between group hover:scale-[1.01] transition-premium">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 fill-amber-600 flex items-center justify-center group-hover:bg-amber-100 transition-colors shadow-sm">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase">1. 神級工具開箱 / Tool Unboxing</span>
+                            <h3 class="text-2xl font-black text-slate-900">全面解碼最新生成式AI工具</h3>
+                            <p class="text-slate-600 font-light leading-relaxed">
+                                我們相信實踐是最好的老師！從最夯的 ChatGPT、Claude、Midjourney，到音樂神兵 Suno 以及影片自動生成 Runway。帶你全方位打破次元壁，第一時間上手最新黑科技。
+                            </p>
+                            
+                            <div class="mt-4 h-36 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop" 
+                                     alt="AI概念設計" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.src='https://placehold.co/600x400/D97706/FFF?text=AI+Tools'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-8 border-t border-slate-100 mt-8 text-xs text-slate-400">
+                        * 每堂課均附贈導師私房「提示詞與工序指南 PDF」，拿了直接用。
+                    </div>
+                </div>
+
+                <!-- 核心 2：超狂案例拆解 -->
+                <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-cyberBg-200/50 flex flex-col justify-between group hover:scale-[1.01] transition-premium">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center group-hover:bg-rose-100 transition-colors shadow-sm">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                            </svg>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="text-xs font-semibold tracking-wider text-rose-600 uppercase">2. 商業實戰拆解 / Real-world Cases</span>
+                            <h3 class="text-2xl font-black text-slate-900">不空談理論，解密萬級流量密碼</h3>
+                            <p class="text-slate-600 font-light leading-relaxed">
+                                解析大廠與自媒體實戰案例：如何用 AI 在 10 分鐘內產出百萬點閱的影片腳本？小商家如何靠 AI 廣告圖節省 90% 設計預算，營收卻能直接翻倍？
+                            </p>
+                            
+                            <div class="mt-4 h-36 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" 
+                                     alt="商業與數據視覺" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.src='https://placehold.co/600x400/E11D48/FFF?text=Case+Studies'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-8 border-t border-slate-100 mt-8 text-xs text-slate-400">
+                        * 課程涵蓋自媒體、跨境電商、行銷提案等多個實用商業場景。
+                    </div>
+                </div>
+
+                <!-- 核心 3：動手開玩與共創 -->
+                <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-cyberBg-200/50 flex flex-col justify-between group hover:scale-[1.01] transition-premium">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-100 transition-colors shadow-sm">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="text-xs font-semibold tracking-wider text-indigo-600 uppercase">3. 線上共創實驗 / Safe Lab Play</span>
+                            <h3 class="text-2xl font-black text-slate-900">大膽試錯，玩出你第一個AI產物</h3>
+                            <p class="text-slate-600 font-light leading-relaxed">
+                                這是一個絕對安全的實驗沙盒。你可以在社群裡曬出自己最搞笑、最天馬行空的 AI 測試。在這裡，沒有人會嘲笑你的不完美，大家會熱情幫你 debug 提示詞！
+                            </p>
+                            
+                            <div class="mt-4 h-36 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" 
+                                     alt="團隊合作與共創" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.src='https://placehold.co/600x400/4F46E5/FFF?text=Co-creation'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-8 border-t border-slate-100 mt-8 text-xs text-slate-400">
+                        * 承諾：在社群裡問任何基礎問題，助教與學長姐都會溫柔解答。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12週課程大綱 (Curriculum Section) -->
+    <section id="curriculum" class="py-20 sm:py-28 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest text-cyberIndigo-600 uppercase">Curriculum Overview</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">12 堂核心 AI 武器特訓庫 🧭</p>
+                <div class="w-12 h-1 bg-cyberIndigo-500 mx-auto rounded"></div>
+                <p class="text-lg text-slate-600 font-light max-w-2xl mx-auto pt-2">
+                    點擊各週次主題，來看看我們如何在每堂課裡解鎖酷炫好玩的 AI 工具！
+                </p>
+            </div>
+
+            <!-- 動態大綱展示 -->
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- 左側週次切換按鈕 (滾動容器) -->
+                <div class="lg:col-span-5 space-y-2 max-h-[550px] overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- Week 1 -->
+                    <button onclick="switchWeek(1)" id="week-btn-1" class="week-btn w-full text-left p-4 rounded-xl border border-cyberIndigo-100 bg-cyberIndigo-50 text-cyberIndigo-700 font-semibold shadow-sm transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-cyberIndigo-600 text-white flex items-center justify-center text-sm font-bold font-tech">01</span>
+                            <span class="text-base">GPT與Claude提示詞魔法</span>
+                        </span>
+                        <svg class="w-5 h-5 text-current" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 2 -->
+                    <button onclick="switchWeek(2)" id="week-btn-2" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">02</span>
+                            <span class="text-base">Midjourney與SD視覺大爆炸</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 3 -->
+                    <button onclick="switchWeek(3)" id="week-btn-3" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">03</span>
+                            <span class="text-base">Suno與Udio神曲製造機</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 4 -->
+                    <button onclick="switchWeek(4)" id="week-btn-4" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">04</span>
+                            <span class="text-base">Runway與Luma動態影像美學</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 5 -->
+                    <button onclick="switchWeek(5)" id="week-btn-5" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">05</span>
+                            <span class="text-base">AI簡報神兵：10秒生成提案</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 6 -->
+                    <button onclick="switchWeek(6)" id="week-btn-6" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">06</span>
+                            <span class="text-base">AI虛擬網紅與數位分身</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 7 -->
+                    <button onclick="switchWeek(7)" id="week-btn-7" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">07</span>
+                            <span class="text-base">AI自動化工作流：機器人助攻</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Special Bootcamp Weekend -->
+                    <button onclick="switchWeek(8)" id="week-btn-8" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-amber-50 text-amber-800 hover:bg-amber-100/50 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-amber-200 text-amber-900 flex items-center justify-center text-sm font-bold font-tech">營</span>
+                            <span class="text-base font-semibold text-amber-800">特別營會：微調你的專屬個人GPTs</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-60 text-amber-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 9 -->
+                    <button onclick="switchWeek(9)" id="week-btn-9" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">08</span>
+                            <span class="text-base">AI寫作與爆款文案解密</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 10 -->
+                    <button onclick="switchWeek(10)" id="week-btn-10" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">09</span>
+                            <span class="text-base">AI輔助程式開發：不寫程式也能做網頁</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 11 -->
+                    <button onclick="switchWeek(11)" id="week-btn-11" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">10</span>
+                            <span class="text-base">AI副業落實：變現大挑戰</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Week 12 -->
+                    <button onclick="switchWeek(12)" id="week-btn-12" class="week-btn w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium transition-all flex items-center justify-between">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold font-tech">11</span>
+                            <span class="text-base">終極AI共創發布會</span>
+                        </span>
+                        <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+
+                <!-- 右側詳細介紹卡片 -->
+                <div class="lg:col-span-7 bg-cyberBg-100 border border-cyberBg-200/60 rounded-3xl p-6 sm:p-10 shadow-inner flex flex-col justify-between min-h-[420px] relative">
+                    <div id="curriculum-detail" class="space-y-6 transition-premium">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-md bg-cyberIndigo-100 text-cyberIndigo-700 text-xs font-bold tracking-widest uppercase">第一週專題</span>
+                                <span class="text-slate-400 text-sm font-tech">Week 01</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">GPT與Claude提示詞魔法：指令這樣下，讓AI變最強助理</h3>
+                            <p class="text-slate-500 font-tech italic text-sm">"Unlock the Magic of Prompt Engineering"</p>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed font-light text-base sm:text-lg">
+                            為什麼你問 AI 回答都很像廢話，而神人下個指令就能讓 AI 自動產出萬字報告與完美的代碼？第一週我們將徹底揭開「提示詞工程」的魔術面紗。不談高深理論，我們教你最實用的結構化指令公式（CO-STAR/PROMPT 模型），讓你1秒將 AI 轉化為行銷鬼才、軟體總監或法律顧問！
+                        </p>
+                        <div class="bg-white/80 rounded-2xl p-4 sm:p-6 border border-cyberBg-200/50 space-y-2">
+                            <h4 class="text-sm font-bold text-slate-800">🤔 本週熱門探討與練習：</h4>
+                            <ul class="text-sm text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
+                                <li>如何用語音快速交代複雜任務，讓 GPT 自動生成結構嚴謹的長文？</li>
+                                <li>如何設定「AI 角色扮演系統」，讓 Claude 以大師視角對你的專案給予毒舌反饋？</li>
+                                <li>如何用黃金提示詞，快速破解日常資訊焦慮，10秒生成完美長片摘要？</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-200/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <span class="text-xs text-slate-400">學員中途隨時加入或回看錄影都完全OK，極度彈性！</span>
+                        <a href="#register" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-white bg-slate-900 hover:bg-slate-800 text-sm font-medium transition-all shadow">
+                            我要免費卡位本期工作坊
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 互動式「AI 取代危機」探索小測試 (Quiz Section) -->
+    <section id="quiz" class="py-20 sm:py-28 bg-cyberBg-100/60 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="bg-white rounded-[2.5rem] shadow-2xl border border-cyberBg-200/50 p-8 sm:p-12 glow-effect">
+                <div class="max-w-2xl mx-auto text-center space-y-3 mb-10">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-cyberIndigo-50 text-cyberIndigo-600 tracking-wider uppercase">AI Aptitude Test</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950">測測你的「AI年代被取代指數」🔮</h2>
+                    <p class="text-slate-500 font-light text-sm sm:text-base">
+                        一分鐘靈魂考驗，看看你的工作流或思維模式是否需要來一場「AI 超進化」大爆發！
+                    </p>
+                </div>
+
+                <!-- 測試卡片容器 -->
+                <div id="quiz-container" class="space-y-8">
+                    <!-- Step 1 -->
+                    <div id="quiz-step-1" class="quiz-step space-y-6">
+                        <div class="flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="font-tech">Question 1 / 3</span>
+                            <span>完成度 33%</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 leading-snug">
+                            Q1. 當你遇到需要處理大量重複性文件、整理週報、或簡報排版時，你的第一直覺是...？
+                        </h3>
+                        <div class="grid gap-3">
+                            <button onclick="nextStep(1, 'A')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>A. 「要瘋了！又要瘋狂手動複製貼上，加班搞排版，人生好痛苦。」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                            <button onclick="nextStep(1, 'B')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>B. 「上網Google看看有沒有範本套用，或上網看有沒有好用的巨集，能省一點時間是一點。」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                            <button onclick="nextStep(1, 'C')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>C. 「管他的，慢吞吞地摸魚做完。上班就是用時間換薪水，不急不徐。」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="quiz-step-2" class="quiz-step hidden space-y-6">
+                        <div class="flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="font-tech">Question 2 / 3</span>
+                            <span>完成度 66%</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 leading-snug">
+                            Q2. 當看到新聞說「新一代 AI 能在幾秒內寫出網站、畫出高畫質概念插畫、甚至一鍵生成微電影」時，你內心的反應是...？
+                        </h3>
+                        <div class="grid gap-3">
+                            <button onclick="nextStep(2, 'A')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>A. 「酷喔！這到底是怎麼做到的？我想馬上學會，把重複瑣事通通丟給 AI 處理！」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                            <button onclick="nextStep(2, 'B')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>B. 「聽起來很厲害，但跟我這個非工程、非美術背景的普通人應該沒關係吧？」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                            <button onclick="nextStep(2, 'C')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>C. 「完了...科技發展這麼快，好焦慮，覺得自己隨時會被取代淘汰...」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="quiz-step-3" class="quiz-step hidden space-y-6">
+                        <div class="flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="font-tech">Question 3 / 3</span>
+                            <span>完成度 100%</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 leading-snug">
+                            Q3. 酷AI超進化學院提供完全免費的「生成式 AI 直播課」，保證零程式基礎門檻，你願意花 2 小時來解鎖實戰技能嗎？
+                        </h3>
+                        <div class="grid gap-3">
+                            <button onclick="nextStep(3, 'A')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>A. 「必須衝！有免費乾貨可以學，還能拿到 AI 提示詞大禮包，不學白不學！」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                            <button onclick="nextStep(3, 'B')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>B. 「如果時間剛好沒卡到工作或會議，我想進去聽看看，體驗一次看看。」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                            <button onclick="nextStep(3, 'C')" class="quiz-option-btn w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-cyberIndigo-500 hover:bg-cyberIndigo-50/20 text-slate-700 font-medium transition-all duration-200 flex items-center justify-between group min-h-[56px]">
+                                <span>C. 「心裡還是會有點抗拒或擔心，因為我真的很不擅長跟電腦或科技工具打交道...」</span>
+                                <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-cyberIndigo-500 flex items-center justify-center text-xs text-transparent group-hover:text-cyberIndigo-600 font-bold flex-shrink-0 ml-4">✓</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 測試結果頁面 -->
+                    <div id="quiz-result" class="hidden space-y-6 text-center py-6">
+                        <div class="w-16 h-16 bg-cyberIndigo-50 text-cyberIndigo-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900" id="result-title">你的探索潛能：AI時代超級頭號玩家 🚀</h3>
+                        <p class="text-slate-600 max-w-xl mx-auto font-light leading-relaxed text-base sm:text-lg" id="result-text">
+                            你對新科技擁有天生的敏銳度，不甘於重複性的搬磚勞動！你渴望在第一時間駕馭 AI，用更聰明、更高效的方式生活與工作。
+                        </p>
+                        <div class="bg-cyberBg-100 rounded-2xl p-6 max-w-lg mx-auto border border-cyberBg-200/50 space-y-4 shadow-inner">
+                            <p class="text-sm font-semibold text-slate-800">✨ 酷AI導師給你的悄悄話：</p>
+                            <p id="result-quote" class="text-xs sm:text-sm text-slate-500 leading-relaxed text-left">
+                                未來世界不會淘汰有好奇心的人。你的這種「打破現狀、追求更高效工作流」的心態在AI時代是無價的！帶著你的真實痛點前來工作坊，我們將帶你把 ChatGPT 與 Midjourney 玩得行雲流水。不再做被資訊埋沒的旁觀者，直接成為掌控AI的頭號玩家，期待你的加入！
+                            </p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                            <button onclick="resetQuiz()" class="px-6 py-3 rounded-full border border-slate-200 text-slate-700 bg-white hover:bg-slate-50 font-medium text-sm transition-all shadow-sm">
+                                重新測驗
+                            </button>
+                            <a href="#register" class="px-8 py-3.5 rounded-full text-white bg-gradient-to-r from-cyberIndigo-600 to-cyberBlue-600 hover:from-cyberIndigo-700 hover:to-cyberBlue-700 font-semibold text-sm transition-all shadow-lg shadow-cyberIndigo-600/20">
+                                立馬卡位酷AI工作坊 🚀
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 真實見證 (Testimonials) -->
+    <section class="py-20 sm:py-28 bg-white border-y border-cyberBg-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest text-cyberIndigo-600 uppercase">Cool AI Testimonials</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">學員有感爆料：AI 如何改變生活</p>
+                <div class="w-12 h-1 bg-cyberIndigo-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 見證 1 -->
+                <div class="bg-cyberBg-50 rounded-3xl p-8 border border-cyberBg-200/40 relative flex flex-col justify-between hover:shadow-lg transition-premium">
+                    <span class="text-5xl text-cyberIndigo-200 font-tech absolute top-4 left-6 pointer-events-none">“</span>
+                    <div class="space-y-4 relative z-10">
+                        <p class="text-slate-600 leading-relaxed font-light italic">
+                            「本來只是想讓報告寫得快一點。在工作坊學了結構化 Prompt 後，我的通識報告直接拿 A+，而且只花了以前十分之一的時間！多出來的時間我竟然可以去健身、追劇。AI 簡直是作弊級的神器！」
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 border-t border-slate-200/50 mt-6">
+                        <div class="w-10 h-10 rounded-full bg-cyberIndigo-100 flex items-center justify-center font-bold text-cyberIndigo-700 flex-shrink-0">飛</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">阿飛 (大學生)</h4>
+                            <p class="text-xs text-slate-400 font-light mt-0.5">大二理工男，曾覺得AI與自己無關</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 見證 2 -->
+                <div class="bg-cyberBg-50 rounded-3xl p-8 border border-cyberBg-200/40 relative flex flex-col justify-between hover:shadow-lg transition-premium">
+                    <span class="text-5xl text-cyberIndigo-200 font-tech absolute top-4 left-6 pointer-events-none">“</span>
+                    <div class="space-y-4 relative z-10">
+                        <p class="text-slate-600 leading-relaxed font-light italic">
+                            「以前請設計師做商品圖跟寫行銷文案，預算低、溝通成本又極高。在這個工作坊，老師帶我直接實操 Midjourney 生圖和 ChatGPT 自媒體爆款公式，現在我自己 1 個小時就能產出整個月的宣傳圖文，營收反而成長了 40%！」
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 border-t border-slate-200/50 mt-6">
+                        <div class="w-10 h-10 rounded-full bg-cyberIndigo-100 flex items-center justify-center font-bold text-cyberIndigo-700 flex-shrink-0">晴</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">小晴 (網商主理人)</h4>
+                            <p class="text-xs text-slate-400 font-light mt-0.5">自媒體創作者，獨立品牌經營者</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 見證 3 -->
+                <div class="bg-cyberBg-50 rounded-3xl p-8 border border-cyberBg-200/40 relative flex flex-col justify-between hover:shadow-lg transition-premium md:col-span-2 lg:col-span-1">
+                    <span class="text-5xl text-cyberIndigo-200 font-tech absolute top-4 left-6 pointer-events-none">“</span>
+                    <div class="space-y-4 relative z-10">
+                        <p class="text-slate-600 leading-relaxed font-light italic">
+                            「身為每天要發百篇文的行銷副理，以前寫到文思枯竭。工作坊教的 AI 自動化工作流 (Make + Claude)，自動幫我收信、發社群貼文、翻譯並生成周報，我的工作效率高到老闆以為我每天加班，其實我都在悠閒喝下午茶！」
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 border-t border-slate-200/50 mt-6">
+                        <div class="w-10 h-10 rounded-full bg-cyberIndigo-100 flex items-center justify-center font-bold text-cyberIndigo-700 flex-shrink-0">陳</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">老陳 (行銷副理)</h4>
+                            <p class="text-xs text-slate-400 font-light mt-0.5">資深行銷主管，自動化提效實踐者</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常見問題 (FAQ Section) -->
+    <section id="faq" class="py-20 sm:py-28 bg-cyberBg-100/60 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest text-cyberIndigo-600 uppercase">FAQ @ Cool AI</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">解答新手的種種心虛疑惑 🤔</p>
+                <div class="w-12 h-1 bg-cyberIndigo-500 mx-auto rounded"></div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="bg-white border border-cyberBg-200/50 rounded-2xl overflow-hidden transition-premium shadow-sm">
+                    <button onclick="toggleFAQ(1)" class="w-full text-left p-6 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
+                        <span class="text-lg font-bold text-slate-900 pr-4">這工作坊真的是免費嗎？會不會有什麼隱藏收費？</span>
+                        <svg id="faq-icon-1" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-ans-1" class="hidden border-t border-slate-100 p-6 bg-slate-50/50 text-slate-600 leading-relaxed font-light">
+                        <strong>拍胸脯保證，百分之百完全免費！</strong> 這個共學計畫旨在推廣生成式 AI 普及化，降低一般人的學習門檻。我們不推銷硬體、也不綁定任何付費軟體，全程線上共學無套路。
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-white border border-cyberBg-200/50 rounded-2xl overflow-hidden transition-premium shadow-sm">
+                    <button onclick="toggleFAQ(2)" class="w-full text-left p-6 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
+                        <span class="text-lg font-bold text-slate-900 pr-4">我完全不會寫程式，也沒有美術設計背景，真的學得會嗎？</span>
+                        <svg id="faq-icon-2" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-ans-2" class="hidden border-t border-slate-100 p-6 bg-slate-50/50 text-slate-600 leading-relaxed font-light">
+                        <strong>這正是為你設計的！</strong> 生成式 AI（例如 ChatGPT、Midjourney）主打「自然語言對話」，也就是說：只要你會講國語、打白話文，就能操縱它！本課程專為 0 基礎、無科技背景的文理科大眾設計。
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="bg-white border border-cyberBg-200/50 rounded-2xl overflow-hidden transition-premium shadow-sm">
+                    <button onclick="toggleFAQ(3)" class="w-full text-left p-6 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
+                        <span class="text-lg font-bold text-slate-900 pr-4">如果星期四晚上剛好要加班/上課，缺席了能跟上進度嗎？</span>
+                        <svg id="faq-icon-3" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-ans-3" class="hidden border-t border-slate-100 p-6 bg-slate-50/50 text-slate-600 leading-relaxed font-light">
+                        <strong>超級彈性，完全不用擔心！</strong> 報名成功的學員都會獲得「共學群組永久權限」。社群內會提供每堂直播課的完整回放、筆記和工具連結。即使當天請假，也能隨時隨地依照自己的步調補課！
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="bg-white border border-cyberBg-200/50 rounded-2xl overflow-hidden transition-premium shadow-sm">
+                    <button onclick="toggleFAQ(4)" class="w-full text-left p-6 flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none">
+                        <span class="text-lg font-bold text-slate-900 pr-4">我需要買很高規格的顯卡或昂貴的電腦才能玩轉 AI 嗎？</span>
+                        <svg id="faq-icon-4" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-ans-4" class="hidden border-t border-slate-100 p-6 bg-slate-50/50 text-slate-600 leading-relaxed font-light">
+                        <strong>完全不需要！</strong> 我們教的絕大多數都是「雲端工具」（Web-based AI tools）。運算都在雲端伺服器跑，你只要有一台普通的平板、手提電腦，甚至是一部手機，只要能連上網路就能極速運作！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 報名表單區 (Registration Section) -->
+    <section id="register" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+        <!-- 裝飾模糊圓 -->
+        <div class="absolute w-96 h-96 bg-cyberIndigo-50 rounded-full blur-3xl -bottom-10 -right-10 opacity-60"></div>
+        <div class="absolute w-96 h-96 bg-cyberBlue-100 rounded-full blur-3xl -top-10 -left-10 opacity-60"></div>
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="bg-gradient-to-b from-cyberIndigo-50/40 to-white border border-cyberBg-200/60 rounded-[2.5rem] shadow-2xl p-8 sm:p-12 glow-effect">
+                <div class="text-center space-y-4 mb-10">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-cyberIndigo-50 text-cyberIndigo-600 tracking-wider uppercase">Join The Revolution</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">酷AI工作坊 | 免費席次與提示詞禮包預約</h2>
+                    <p class="text-slate-500 font-light max-w-md mx-auto text-sm sm:text-base">
+                        給自己的未來與生產力一個超進化爆發的機會。只需填寫超簡單的資料，我們將在課前寄送【AI神級提示詞大禮包】與共學連結到你的 Email！
+                    </p>
+                </div>
+
+                <!-- 報名表單 -->
+                <form id="alpha-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-slate-700 mb-2">你的暱稱 / 姓名 <span class="text-rose-500">*</span></label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyberIndigo-500/20 focus:border-cyberIndigo-500 transition-all bg-white" placeholder="例：小明 / 創意老陳">
+                        </div>
+                        <div>
+                            <label for="identity" class="block text-sm font-semibold text-slate-700 mb-2">目前身份 / 領域</label>
+                            <select id="identity" name="identity" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyberIndigo-500/20 focus:border-cyberIndigo-500 transition-all bg-white">
+                                <option value="在學學生">在學學生 (探索個人未來)</option>
+                                <option value="行銷人/自媒體經營">行銷人 / 自媒體經營者</option>
+                                <option value="設計/創意工作者">設計 / 創意工作者</option>
+                                <option value="職場上班族">一般職場上班族 (提升辦公效率)</option>
+                                <option value="自由職業者/創業者">自由工作者 / 創業者</option>
+                                <option value="純科技愛好者">純科技愛好者 / 其他</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="socialId" class="block text-sm font-semibold text-slate-700 mb-2">你的 LINE ID / Discord 帳號 <span class="text-rose-500">*</span></label>
+                            <input type="text" id="socialId" name="socialId" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyberIndigo-500/20 focus:border-cyberIndigo-500 transition-all bg-white" placeholder="例：nfu_ai_player (方便小組私訊聯絡)">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">常用 Email <span class="text-rose-500">*</span></label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyberIndigo-500/20 focus:border-cyberIndigo-500 transition-all bg-white" placeholder="yourname@gmail.com (接收上課講義與工具包)">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="format" class="block text-sm font-semibold text-slate-700 mb-2">偏好的學習方式</label>
+                            <select id="format" name="format" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyberIndigo-500/20 focus:border-cyberIndigo-500 transition-all bg-white">
+                                <option value="線上直播共學">線上直播共學（大推！即時互動極強）</option>
+                                <option value="非同步看回放">不克看直播（只求講義、大禮包與錄影回放）</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="time" class="block text-sm font-semibold text-slate-700 mb-2">是否方便週四 19:30 的直播聚會？</label>
+                            <select id="time" name="time" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyberIndigo-500/20 focus:border-cyberIndigo-500 transition-all bg-white">
+                                <option value="週四晚上可以">週四 19:30 OK！準備起飛！</option>
+                                <option value="週四晚上不行">週四不行，但我想要獲取回放</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-semibold text-slate-700 mb-2">最想讓 AI 幫你解決什麼工作痛點？（或有什麼話想對導師說？）</label>
+                        <textarea id="message" name="message" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyberIndigo-500/20 focus:border-cyberIndigo-500 transition-all bg-white resize-none" placeholder="例：常需要寫英文Email好痛苦 / 希望學會Midjourney做自媒體配圖 / 老闆常要我生簡報但我毫無頭緒..."></textarea>
+                    </div>
+
+                    <!-- 隱私保障說明 -->
+                    <div class="flex items-start space-x-3 text-xs text-slate-500 bg-cyberBg-50 p-4 rounded-xl border border-cyberBg-200/50">
+                        <input type="checkbox" required id="privacy-check" class="mt-1 rounded text-cyberIndigo-600 focus:ring-cyberIndigo-500 w-4 h-4 flex-shrink-0">
+                        <label for="privacy-check" class="leading-relaxed cursor-pointer">
+                            我同意以上填寫之個人資料僅供酷AI超進化學院發送上課通知、課堂回放、確認報名意願與發送免費提示詞大禮包之用。我們嚴格保護您的隱私，承諾絕不向第三方洩露或作其他商業用途。
+                        </label>
+                    </div>
+
+                    <!-- 送出按鈕 -->
+                    <div class="pt-2 text-center">
+                        <button type="submit" id="submit-btn" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-cyberIndigo-600 to-cyberBlue-600 hover:from-cyberIndigo-700 hover:to-cyberBlue-700 text-white font-bold rounded-full tracking-wider text-lg shadow-xl shadow-cyberIndigo-600/30 hover:scale-[1.02] active:scale-100 transition-premium">
+                            準備好了，領取 AI 工具大禮包 🚀
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成功提交報名的彈窗 Modal -->
+    <div id="success-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeSuccessModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full border border-cyberBg-200">
+                <div class="bg-white px-6 pt-8 pb-6 sm:p-8">
+                    <div class="text-center space-y-4">
+                        <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        
+                        <h3 class="text-2xl font-black text-slate-900" id="modal-title">卡位成功！✨</h3>
+                        
+                        <div class="text-sm text-slate-600 space-y-3 font-light leading-relaxed">
+                            <p>感謝您的報名！我們已成功登記您的 AI 進化席次。</p>
+                            <p id="google-sheet-status" class="hidden text-xs text-emerald-600 bg-emerald-50 p-2 rounded border border-emerald-200 text-center font-semibold">
+                                🎉 報名資料已成功傳送到雲端共學資料庫！
+                            </p>
+                            <div class="bg-cyberBg-100 p-4 rounded-xl border border-cyberBg-200/50 text-xs text-slate-500 text-left space-y-2">
+                                <p><strong>💡 課堂提示與大禮包：</strong></p>
+                                <p>1. 我們將在 24 小時內將<strong>【AI 神級提示詞大禮包】</strong>寄到您的 Email 郵箱，請隨時留意收信（也別忘了檢查垃圾信件夾喔！）。</p>
+                                <p>2. 小幫手會同步透過您的 <strong>LINE / Discord</strong> 邀請您加入我們的學員共學社群，發送直播講義連結！</p>
+                            </div>
+                            <p class="text-center font-bold text-slate-800 pt-2">準備迎來你的第二大腦，超進化起飛！</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 px-6 py-4 sm:px-8 sm:py-5 flex justify-center">
+                    <button type="button" onclick="closeSuccessModal()" class="w-full inline-flex justify-center px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm transition-colors shadow">
+                        OK，期待與導師線上見！
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 錯誤處理 Modal -->
+    <div id="error-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="error-modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeErrorModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full border border-rose-200">
+                <div class="bg-white px-6 pt-8 pb-6 sm:p-8">
+                    <div class="text-center space-y-4">
+                        <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-rose-50 text-rose-600 border border-rose-100">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-rose-700" id="error-modal-title">資料傳送出錯了 😢</h3>
+                        <div class="text-sm text-slate-600 space-y-2 font-light leading-relaxed">
+                            <p>非常抱歉，資料傳送至伺服器發生了點小意外。</p>
+                            <p id="error-message-text" class="text-xs bg-rose-50 p-3 rounded-lg text-rose-600 font-mono text-left"></p>
+                            <p class="text-xs text-slate-400">請確認您的網路連線。您也可以稍微等一下再試，或隨時聯絡我們！</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 px-6 py-4 sm:px-8 sm:py-5 flex justify-center">
+                    <button type="button" onclick="closeErrorModal()" class="w-full inline-flex justify-center px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm transition-colors shadow">
+                        返回並重新試試
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-slate-950 text-slate-300 py-16 sm:py-20 border-t border-slate-900 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                
+                <div class="md:col-span-6 space-y-5">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-8 h-8 text-cyberIndigo-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="5" stroke-dasharray="10 5" />
+                            <circle cx="50" cy="50" r="25" stroke="url(#paint0_linear_footer)" stroke-width="6" />
+                            <defs>
+                                <linearGradient id="paint0_linear_footer" x1="25" y1="25" x2="75" y2="75" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#6366F1" />
+                                    <stop offset="1" stop-color="#06B6D4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div>
+                            <span class="font-tech font-bold text-lg text-white block tracking-tight">Cool AI Academy</span>
+                            <span class="text-[10px] block text-cyberIndigo-500 tracking-widest font-semibold uppercase -mt-1">酷AI超進化學院</span>
+                        </div>
+                    </div>
+                    <p class="max-w-md text-sm text-slate-400 font-light leading-relaxed">
+                        我們是地表最溫暖好玩、專注於普及生成式 AI 的普及推廣學院。不論你是否具有技術背景，在酷AI的工作坊裡，你都能以最低門檻玩轉前沿科技，重塑生產力，開啟全新的智能副業與靈魂自由。
+                    </p>
+                    <div class="flex items-center space-x-3 text-xs text-slate-500">
+                        <span>© 2026 Cool AI Academy 酷AI超進化學院 版權所有</span>
+                    </div>
+                </div>
+
+                <!-- 快速連結 -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="text-sm font-bold text-white tracking-widest uppercase font-tech">快速指南</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">什麼是生成式AI？</a></li>
+                        <li><a href="#pillars" class="hover:text-white transition-colors">每次聚會的三大模組</a></li>
+                        <li><a href="#curriculum" class="hover:text-white transition-colors">12週超核心大綱</a></li>
+                        <li><a href="#quiz" class="hover:text-white transition-colors">AI取代度心理測驗</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">零基礎解惑專區</a></li>
+                    </ul>
+                </div>
+
+                <!-- 聯絡與社群 -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="text-sm font-bold text-white tracking-widest uppercase font-tech">探索更多酷系列</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Cool AI 開源共創日常</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Discord 數位遊民社區</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">提示詞庫 (Prompts Hub)</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">副業極速變現實戰</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-900 mt-12 pt-8 text-center text-xs text-slate-500 space-y-2">
+                <p>生成式 AI 正在徹底洗牌全球生產力與創作者生態。</p>
+                <p>不論你是何種專業、身處哪個產業，我們衷心邀請你來工作坊共享科技紅利，玩轉數位武器！</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 互動與資料處理邏輯 -->
+    <script>
+        /**
+         * 🔗 GOOGLE 試算表連結設定 (Google Apps Script Web App URL)
+         * 沿用您原先模板設定的 Google Sheets 連接，確保運作無虞！
+         */
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAYQmVW0DTMCYBcpknMN-tdEVVMa6Z5yOlOGrkbIwQX4MW1w1XE6Prnd1j-Gvjtyu8/exec';
+
+        // 行動版選單開關
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            }
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+
+        // 12堂AI課程大綱數據 (超酷生成式科技主題)
+        const weekDetails = {
+            1: {
+                title: "GPT與Claude提示詞魔法：指令這樣下，讓AI變最強助理",
+                eng: "Unlock the Magic of Prompt Engineering",
+                weekNum: "Week 01",
+                tag: "第一週專題",
+                desc: "為什麼你問 AI 回答都很像廢話，而神人下個指令就能讓 AI 自動產出萬字報告與完美的代碼？本週我們將揭開「提示詞工程」的魔術面紗。我們教你最實用的結構化指令公式（CO-STAR/PROMPT 模型），讓你1秒將 AI 轉化為行銷鬼才、軟體總監或法律顧問！",
+                topics: [
+                    "如何用語音快速交代複雜任務，讓 GPT 自動生成結構嚴謹的長文？",
+                    "如何設定「AI 角色扮演系統」，讓 Claude 以大師視角對你的專案給予毒舌反饋？",
+                    "如何用黃金提示詞，快速破解日常資訊焦慮，10秒生成完美長片摘要？"
+                ]
+            },
+            2: {
+                title: "Midjourney與SD視覺大爆炸：人人都是頂級插畫師",
+                eng: "Generative AI Artistry & Graphic Explosion",
+                weekNum: "Week 02",
+                tag: "第二週專題",
+                desc: "從文字到精美商業原畫，只需要 10 秒鐘！我們將實測 Midjourney V6 以及 Stable Diffusion。不管你是想做社群海報、包裝設計，還是精緻的賽博朋克頭像，導師將公開「光影控制、鏡頭角度、材質命令」的終極黃金詞庫組合。",
+                topics: [
+                    "如何運用 MJ 的混圖模式（Blend），一秒融合自己的照片生成二次元分身？",
+                    "商業包裝與社群配圖如何零版權、零成本快速批量產出？",
+                    "Stable Diffusion 局部重繪技術，如何輕鬆替模特兒換衣服、改背景？"
+                ]
+            },
+            3: {
+                title: "Suno與Udio神曲製造：3分鐘做出一首爆紅流行歌",
+                eng: "Music Co-Creation with Suno & Udio",
+                weekNum: "Week 03",
+                tag: "第三週專題",
+                desc: "不懂五線譜、不會彈樂器，也能發行單曲？本週帶你一起玩轉 Suno 與 Udio。只需輸入「電子搖滾、國風、賽博爵士」風格並填寫歌詞，AI 將自動為你搭配天籟人聲並一鍵編曲。甚至還能讓它為你的產品一鍵產出廣告神曲！",
+                topics: [
+                    "如何配合 ChatGPT 生成極具押韻、帶有金曲獎質感的優美歌詞？",
+                    "AI 音樂工具的「章節擴展與樂器控制」技巧，避免副歌重複尬唱。",
+                    "如何取得版權授權，將你的 AI 音樂發表至 Spotify、Apple Music 開啟被動收入？"
+                ]
+            },
+            4: {
+                title: "Runway與Luma動態影像：用文字導出好萊塢級短片",
+                eng: "AI Film-Making: runway & Luma Aesthetics",
+                weekNum: "Week 04",
+                tag: "第四週專題",
+                desc: "影視製作的平民化時代降臨了！本週我們將主攻 Runway Gen-2 與 Luma Dream Machine。學習如何把一張靜態圖片「動起來」，或直接用語音命令生成電影分鏡。你也可以當導演，零演員、零攝影棚預算，在線上共創你的第一部好萊塢科幻大片！",
+                topics: [
+                    "如何用語音和關鍵字控制 AI 影片的鏡頭平移、拉近（Zoom-in）與旋轉？",
+                    "如何將 Midjourney 繪製的高畫質概念圖，轉化為流暢震撼的動態分鏡？",
+                    "AI 語音生合成 (ElevenLabs) 與影片配音軌的極速整合技巧。"
+                ]
+            },
+            5: {
+                title: "AI簡報神兵：10秒生出精美工作簡報與商業提案",
+                eng: "Instant Pitch Decks with Gamma & Tome",
+                weekNum: "Week 05",
+                tag: "第五週專題",
+                desc: "明天早上就要向客戶提案，現在還是一片空白？別慌！這堂課我們帶你實踐簡報神器 Gamma 與 Tome。只要給它一個大綱或核心概念，AI 將自動完成「精緻排版、色彩美學、表格配置、插圖生成」，讓你從排版苦工中徹底解脫！",
+                topics: [
+                    "如何把草稿大綱一鍵轉化為極具視覺震撼的 Gamma 網頁式簡報？",
+                    "如何引導 AI 自動繪製簡報專屬圖表，避免網上亂抓盜版圖？",
+                    "如何微調簡報的邏輯架構，確保 AI 生成內容精確、有商業說服力？"
+                ]
+            },
+            6: {
+                title: "AI虛擬網紅與數位分身：零成本打造你專屬的網紅",
+                eng: "AI Avatars & Virtual Influencers From Scratch",
+                weekNum: "Week 06",
+                tag: "第六週專題",
+                desc: "想做影片卻不想露臉、也不想錄音？我們將使用 HeyGen、D-ID 與 Midjourney。手把手帶你生成一個逼真度達 99% 的 3D 虛擬主播，讓它用你的音色在影片裡完美流利地說著各國語言，徹底開啟無人出鏡、高效批量產片的「AI 自媒體」副業模式！",
+                topics: [
+                    "如何提取自己的音色（Clone Voice）並賦予你的 2D AI 原畫頭像？",
+                    "如何批量產出 IG Reels / TikTok 爆款無露臉短影音，賺取創作者基金？",
+                    "AI 虛擬網紅（Virtual Influencer）在海內外的變現手法與商業案例。"
+                ]
+            },
+            7: {
+                title: "AI自動化工作流：讓機器人幫你自動收信、發圖、翻譯",
+                eng: "AI Automation workflows: Zapier & Make",
+                weekNum: "Week 07",
+                tag: "第七週專題",
+                desc: "真正的提效，是讓 AI 幫你「全自動」工作！本週學習將 ChatGPT 與自動化神器 Make / Zapier 連結。只要當客戶填寫表單，AI 機器人將會「自動分析意圖、發送客製回覆 Email、同步發圖到 IG，並回傳周報到你的 LINE」。這就是自動化企業的未來形態！",
+                topics: [
+                    "如何不寫代碼（No-code），將 Google Form、LINE 與 OpenAI 的 API 連接？",
+                    "自動化監控行業新聞，並讓 AI 每天定時整理、排程發佈至自媒體帳號。",
+                    "建立你個人專屬的「AI 秘書」，24小時幫你分流重要通知與信件。"
+                ]
+            },
+            8: {
+                title: "特別營會：微調你的專屬個人GPTs與心靈知識庫",
+                eng: "The Bootcamp: Build Your Custom GPTs & Chatbots",
+                weekNum: "The Weekend",
+                tag: "酷AI共創營特輯",
+                desc: "這是一場激發大腦極限的週末高能實戰營！我們不再只當 AI 工具的使用者，我們要當「創造者」。導師將手把手教你利用 OpenAI 官方的 GPTs 平台，匯入你個人的專業文件、個人日記或客戶檔案，微調出一個百分百懂你的「AI 數位第二大腦 / 企業客服助理」！",
+                topics: [
+                    "如何上傳個人筆記，微調出一個秒懂你想法的「個人智慧靈魂助教」？",
+                    "如何微調 GPTs 的 Action 命令，讓它與外網第三方工具直接連線查詢資訊？",
+                    "發布你的專屬 GPTs 至官方 Store，建立你的個人開源品牌與技術溢價。"
+                ]
+            },
+            9: {
+                title: "AI寫作與爆款文案：自媒體百萬流量的吸睛密碼",
+                eng: "AI Copywriting & Viral Content Secrets",
+                weekNum: "Week 08",
+                tag: "第八週專題",
+                desc: "在這個資訊爆炸的時代，平淡的文字無人問津。本堂課我們將 ChatGPT 注入「心理學吸睛公式」。教你如何訓練 AI 撰寫社群媒體爆款標題、極具黏著度的小紅書文體、以及讓人忍不住下單的電商銷售文案。用科學的方法，讓你的文字像引力一樣抓人眼球！",
+                topics: [
+                    "小紅書/IG 專屬：如何設計「感性、多表情符號、引人共鳴」的 AI 提示詞架構？",
+                    "如何運用「痛點行銷、限時焦慮、情感承諾」三部曲，生成高轉化率銷售頁文案？",
+                    "利用 AI 快速拆解同業爆款文案，吸取其骨架並進行 1 秒創意洗稿。"
+                ]
+            },
+            10: {
+                title: "AI輔助程式開發：不用學語法，AI直接幫你做網站",
+                eng: "AI Coding for Non-Coders: Build Apps Visually",
+                weekNum: "Week 09",
+                tag: "第九週專題",
+                desc: "不要再因為看不懂 HTML/CSS 而放棄做網頁了！現代 AI（如 Claude 3.5 Sonnet / V0）簡直是無代碼（No-code）開荒利器。你只需要像跟設計師對話一樣：「我想要一個黑白科技風的記帳 App，點擊這按鈕會有流星特效。」AI 將在幾秒內寫出完美程式碼，並在畫面上即時展示、提供下載！",
+                topics: [
+                    "如何用 Claude Artifacts 免費製作一個功能完備、可互動的小遊戲或小計算器？",
+                    "使用 v0.dev (Vercel) 進行現代極簡風網頁設計的文字操縱密技。",
+                    "如何向 AI 描述系統報錯（Debug），讓它自己修復代碼，秒變網頁架設大神。"
+                ]
+            },
+            11: {
+                title: "AI副業落地實務：用 AI 工具開展你的副業與個人品牌",
+                eng: "AI Hustling: Turn AI Skills into Side Income",
+                weekNum: "Week 10",
+                tag: "第十週專題",
+                desc: "學會了這麼多神兵利器，如何轉化為真實的被動收入？這堂課我們不談空泛雞湯，只講「變現方法論」。從在國外平台 Freelance 接案生圖、幫小店家架設 AI 客服機器人，到運用 AI 工具撰寫並出版電子書。幫你用 AI 技能在下班後多賺一份零用錢！",
+                topics: [
+                    "Fiverr / Upwork 實戰：如何在接案平台包裝你的「AI 繪圖/提示詞優化」服務？",
+                    "如何向中小型實體店商推銷「AI 客服與問卷系統」，收取維護費？",
+                    "利用 AI 進行知識萃取，打造個人精緻數位電子商品（E-books/Templates）並上線販售。"
+                ]
+            },
+            12: {
+                title: "終極AI大賽與社群結業：展示你的AI產品、獲得結業證書",
+                eng: "Grand AI Demo Day & Community Graduation",
+                weekNum: "Week 11",
+                tag: "第十一週專題",
+                desc: "這是我們 12 堂學習旅程的最高光時刻！全體學員將在 Discord 直播大廳，秀出你利用 AI 繪製的精美插圖、製作的音樂、自動化系統、或是酷炫網頁。我們將邀請行業大咖進行友善點評。凡是完成專案共創的學員，都將獲得酷AI學院頒發的「AI 數位超進化榮譽結業證書」，開啟你的數位游牧未來生活！",
+                topics: [
+                    "學員專案路演（Demo Day）：在大眾面前秀出你的 AI 科技超能力！",
+                    "如何加入酷AI學院的長期「導師/助教共創計畫」，與各路大咖一同變現？",
+                    "結業後的未來：我們在 Discord 的精彩技術共享與線下聚會，下一步該怎麼玩？"
+                ]
+            }
+        };
+
+        function switchWeek(weekNum) {
+            const buttons = document.querySelectorAll('.week-btn');
+            buttons.forEach(btn => {
+                const id = btn.id;
+                const isTarget = id === `week-btn-${weekNum}`;
+                
+                btn.className = "week-btn w-full text-left p-4 rounded-xl border transition-premium flex items-center justify-between focus:outline-none";
+                
+                if (isTarget) {
+                    if (weekNum === 8) {
+                        btn.className += " border-amber-400 bg-amber-50 text-amber-900 font-bold shadow-md";
+                    } else {
+                        btn.className += " border-cyberIndigo-100 bg-cyberIndigo-50 text-cyberIndigo-700 font-bold shadow-md";
+                    }
+                    const svg = btn.querySelector('svg');
+                    if (svg) svg.className = "w-5 h-5 text-current";
+                } else {
+                    if (id === 'week-btn-8') {
+                        btn.className += " border-slate-100 bg-amber-50/60 text-amber-800/80 hover:bg-amber-100/50 font-medium";
+                    } else {
+                        btn.className += " border-slate-100 bg-slate-50 text-slate-700 hover:bg-cyberBg-100 font-medium";
+                    }
+                    const svg = btn.querySelector('svg');
+                    if (svg) svg.className = "w-5 h-5 opacity-40";
+                }
+            });
+
+            const detailContainer = document.getElementById('curriculum-detail');
+            detailContainer.classList.add('opacity-0', 'scale-95');
+
+            setTimeout(() => {
+                const data = weekDetails[weekNum];
+                let topicsHtml = '';
+                data.topics.forEach(topic => {
+                    topicsHtml += `<li>${topic}</li>`;
+                });
+
+                detailContainer.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-md ${weekNum === 8 ? 'bg-amber-100 text-amber-900' : 'bg-cyberIndigo-100 text-cyberIndigo-700'} text-xs font-bold tracking-widest uppercase">${data.tag}</span>
+                            <span class="text-slate-400 text-sm font-tech">${data.weekNum}</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">${data.title}</h3>
+                        <p class="text-slate-500 font-tech italic text-sm">"${data.eng}"</p>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed font-light text-base sm:text-lg">
+                        ${data.desc}
+                    </p>
+                    <div class="bg-white/80 rounded-2xl p-4 sm:p-6 border border-cyberBg-200/50 space-y-2 shadow-sm">
+                        <h4 class="text-sm font-bold text-slate-800">🤔 本週熱門探討與練習：</h4>
+                        <ul class="text-sm text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
+                            ${topicsHtml}
+                        </ul>
+                    </div>
+                `;
+                detailContainer.classList.remove('opacity-0', 'scale-95');
+                detailContainer.classList.add('opacity-100', 'scale-100');
+            }, 150);
+        }
+
+        // 互動測驗 (Quiz)
+        let userAnswers = {};
+
+        function nextStep(step, val) {
+            userAnswers[step] = val;
+            const currentStepEl = document.getElementById(`quiz-step-${step}`);
+            currentStepEl.classList.add('hidden');
+
+            if (step < 3) {
+                const nextStepEl = document.getElementById(`quiz-step-${step + 1}`);
+                nextStepEl.classList.remove('hidden');
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const resultEl = document.getElementById('quiz-result');
+            const titleEl = document.getElementById('result-title');
+            const textEl = document.getElementById('result-text');
+            const quoteEl = document.getElementById('result-quote');
+
+            const ans1 = userAnswers[1];
+            const ans2 = userAnswers[2];
+            const ans3 = userAnswers[3];
+
+            let resultTitle = "";
+            let resultText = "";
+            let resultQuote = "";
+
+            if (ans1 === 'A' && ans2 === 'A') {
+                resultTitle = "AI時代超級頭號玩家 🚀";
+                resultText = "你對新科技擁有天生的敏銳度，不甘於重複性的搬磚勞動！你渴望在第一時間駕馭 AI，用更聰明、更高效的方式生活與工作。你非常適合「酷AI超進化工作坊」這種實戰流、零空談的平台！";
+                resultQuote = "未來世界不會淘汰有好奇心的人。你的這種『打破現狀、追求更高效工作流』的心態在AI時代是無價的！帶著你的真實痛點前來工作坊，我們將帶你把 ChatGPT 與 Midjourney 玩得行雲流水。不再做被資訊埋沒的旁觀者，直接成為掌控AI的頭號玩家，期待你的加入！";
+            } else if (ans2 === 'C') {
+                resultTitle = "AI焦慮防衛隊員 🛡️";
+                resultText = "你非常敏感且真誠地感受到了科技巨浪帶來的衝擊，內心不免有些許焦慮（怕被淘汰、不想被機械工作塞滿，我們完全理解！）。但請相信，AI 的本質是你的僕人，而不是你的替身。";
+                resultQuote = "我們工作坊最反對的就是『高談理論、販賣焦慮』。我們熱烈邀請你帶著你的防衛心、甚至是滿腦子的困惑與不爽，來我們 Discord 共學頻道！在這裡你可以隨時吐槽，也有大師級的學長姐陪你從最基礎、最好笑的 ChatGPT 指令學起，一步步找回生活主導權。別怕，我們罩你！";
+            } else {
+                resultTitle = "隨性 Chill 開放的 AI 探索行者 🍃";
+                resultText = "你對科技發展抱持著隨緣、輕鬆且合群的態度！你平時有自己的生活步調，但當看見有趣的 AI 實用案例，你也十分樂意拓展眼界、多學一項被動收入神兵。";
+                resultQuote = "酷AI超進化學院就是一個沒有壓力、主打實用與趣味的科技綠洲。不論你目前工作、學業有多忙碌，每週花一小部分時間跟著大家開箱最好玩的音樂 Suno 與圖像 Midjourney。無須任何程式背景，輕輕鬆鬆讓自己大腦來場無痛升級，一起在 Discord 共創好玩的案子吧！";
+            }
+
+            titleEl.innerText = "你的探索潛能：" + resultTitle;
+            textEl.innerText = resultText;
+            quoteEl.innerText = resultQuote;
+            resultEl.classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-step-1').classList.remove('hidden');
+            document.getElementById('quiz-step-2').classList.add('hidden');
+            document.getElementById('quiz-step-3').classList.add('hidden');
+        }
+
+        // 常見問題 FAQ 收折
+        function toggleFAQ(num) {
+            const ans = document.getElementById(`faq-ans-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            const card = ans.parentElement;
+            const isHidden = ans.classList.contains('hidden');
+
+            if (isHidden) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+                card.classList.add('border-cyberIndigo-500/20', 'shadow-md');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+                card.classList.remove('border-cyberIndigo-500/20', 'shadow-md');
+            }
+        }
+
+        // 表單提交處理
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // 取得表單欄位內容
+            const name = document.getElementById('name').value.trim();
+            const identity = document.getElementById('identity').value;
+            const socialId = document.getElementById('socialId').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const format = document.getElementById('format').value;
+            const time = document.getElementById('time').value;
+            const message = document.getElementById('message').value.trim();
+
+            // 防重複點擊，進入 Loading 狀態
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                正在為你鎖定 AI 大禮包與直播席次...
+            `;
+
+            // 設定狀態提示隱藏
+            document.getElementById('google-sheet-status').classList.add('hidden');
+
+            // 判斷是否已設定 Google Script URL
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== '') {
+                try {
+                    const formData = new URLSearchParams();
+                    formData.append('timestamp', new Date().toLocaleString('zh-TW'));
+                    formData.append('name', name);
+                    formData.append('identity', identity);   
+                    formData.append('socialId', socialId);   
+                    formData.append('email', email);
+                    formData.append('format', format);
+                    formData.append('time', time);
+                    formData.append('message', message);
+
+                    // 跨網域 no-cors 模式確保請求安全送出到試算表
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', 
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: formData
+                    });
+
+                    document.getElementById('google-sheet-status').classList.remove('hidden');
+                    document.getElementById('success-modal').classList.remove('hidden');
+
+                } catch (error) {
+                    console.error('Google Sheets Error:', error);
+                    document.getElementById('error-message-text').innerText = error.message || '雲端傳送迷路了，但您的報名意願小幫手已紀錄，請稍後再試！';
+                    document.getElementById('error-modal').classList.remove('hidden');
+                } finally {
+                    // 恢復按鈕狀態
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
+            } else {
+                // 若沒有填寫 GOOGLE_SCRIPT_URL，則進行本地模擬
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    document.getElementById('success-modal').classList.remove('hidden');
+                }, 1000);
+            }
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('alpha-form').reset();
+        }
+
+        // 關閉錯誤訊息
+        function closeErrorModal() {
+            document.getElementById('error-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
